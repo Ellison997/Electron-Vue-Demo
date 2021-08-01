@@ -13,10 +13,10 @@ https://www.narda-sts.com/en/servicesupport/software-updates-and-firmware/srm/#d
     }
 ]
 
-先卸载
+## 先卸载
 npm uninstall sqlite3
 
-再安装
+## 再安装
 npm install sqlite3 --runtime=electron --target=5.0.7 --dist-url=https://atom.io/download/electron --save
 
 
