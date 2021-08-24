@@ -22,17 +22,21 @@
         "directories": {
             "output": "build"
         },
-        "publish": [{
-            "provider": "generic",
-            "url": "http://group.aixiao.electron-vue-demo/uploads/software"
-        }],
+        "publish": [
+            {
+                "provider": "generic",
+                "url": "http://group.aixiao.electron-vue-demo/uploads/software"
+            }
+        ],
         "files": [
             "dist/electron/**/*"
         ],
-        "extraResources": [{
-            "from": "./static",
-            "to": "./static"
-        }],
+        "extraResources": [
+            {
+                "from": "./static",
+                "to": "./static"
+            }
+        ],
         "nsis": {
             "oneClick": false,
             "perMachine": true,
@@ -44,7 +48,8 @@
             "uninstallerIcon": "static/icon.ico"
         },
         "dmg": {
-            "contents": [{
+            "contents": [
+                {
                     "x": 410,
                     "y": 150,
                     "type": "link",
@@ -62,10 +67,12 @@
         },
         "win": {
             "icon": "static/icon.ico",
-            "target": [{
-                "target": "nsis",
-                "arch": "x64"
-            }]
+            "target": [
+                {
+                    "target": "nsis",
+                    "arch": "x64"
+                }
+            ]
         },
         "linux": {
             "icon": "static/icons"
