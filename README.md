@@ -36,7 +36,6 @@ npm run build:dir
 
 ```
 npm run build
-
 ```
 
 ## 清除打包文件

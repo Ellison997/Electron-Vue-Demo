@@ -84,6 +84,7 @@
         "electron-dl": "^3.0.2",
         "electron-updater": "^4.3.5",
         "element-ui": "2.13.0",
+        "ffmpeg.js": "^4.2.9003",
         "js-cookie": "^2.2.1",
         "moment": "^2.27.0",
         "node-addon-demo": "^1.0.0",

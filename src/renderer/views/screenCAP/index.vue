@@ -24,6 +24,7 @@
 
 <script>
 import bus from "@/utils/bus.js";
+import mp4 from "@/utils/mp4.js";
 import { unitConversion } from "@/utils";
 import store from "@/store";
 const { desktopCapturer, remote, shell } = require("electron");
@@ -76,20 +77,48 @@ export default {
   },
   methods: {
     async start() {
-      const sources = await desktopCapturer.getSources({ types: ["screen"] });
+      const sources = await desktopCapturer.getSources({
+        types: ["window", "screen"],
+      });
       console.log("视频源:", sources);
+      var types = [
+        "video/webm",
+        "audio/webm",
+        "video/webm;codecs=vp8",
+        "video/webm;codecs=vp9",
+        "video/webm;codecs=daala",
+        "video/webm;codecs=h264",
+        "audio/webm;codecs=opus",
+        "video/mpeg",
+        "video/mp4",
+        "video/AV1",
+      ];
+
+      for (var i in types) {
+        console.log(
+          "Is " +
+            types[i] +
+            " supported? " +
+            (MediaRecorder.isTypeSupported(types[i]) ? "Maybe!" : "Nope :(")
+        );
+      }
+
       const stream = await navigator.mediaDevices.getUserMedia({
-        audio: false,
+        audio: {
+          mandatory: {
+            chromeMediaSource: "desktop",
+          },
+        },
         video: {
           mandatory: {
-            chromeMediaSource: "screen",
+            chromeMediaSource: "desktop",
             chromeMediaSourceId: sources[0].id,
           },
         },
       });
 
       this.mediaRecorder = new MediaRecorder(stream, {
-        mimeType: "video/webm; codecs=vp9",
+        mimeType: "video/webm;codecs=h264",
       });
       this.mediaRecorder.ondataavailable = (event) => {
         event.data.size > 0 && this.chunks.push(event.data);
@@ -104,7 +133,8 @@ export default {
 
       this.mediaRecorder.onstop = async () => {
         const blob = new Blob(this.chunks, { type: "video/webm" });
-        const buffer = Buffer.from(await blob.arrayBuffer());
+         const buffer = Buffer.from(await blob.arrayBuffer());
+       // const buffer = Buffer.from(mp4(Buffer.from(await blob.arrayBuffer())));
         const filePath = path.resolve(
           remote.app.getPath("downloads"),
           `${Date.now()}.webm`
