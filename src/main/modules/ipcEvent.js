@@ -1,7 +1,8 @@
 import { ipcMain, dialog, app, BrowserWindow, shell, globalShortcut, desktopCapturer } from 'electron'
-import keynode from '../scripts/keynode64.node'
-console.log('密钥原生模块：', keynode);
+// import keynode from '../scripts/keynode64.node'
+// console.log('密钥原生模块：', keynode);
 import Sqlite from '../utils/sqlite'
+import nodeAddon from 'node-addon-demo'
 import path from 'path'
 import fs from 'fs'
 
@@ -60,7 +61,8 @@ async function startRecording() {
 function init() {
     // 获取机器码
     ipcMain.on('machine-code', (event, arg) => {
-        let rcode = keynode.GetMachineCode();
+        // let rcode = keynode.GetMachineCode();
+        let rcode = '123456'
         console.log("GetMachineCode", rcode);
         event.sender.send('machine-code', rcode)
     })
@@ -69,16 +71,20 @@ function init() {
     ipcMain.on('check-lic', (event, arg) => {
         let licfile = "KEY.lic"
 
-        let re = keynode.CheckLic(licfile);
-        console.log("验证结果：", re);
+        // let re = keynode.CheckLic(licfile);
+        let re = {
+            Success: 1
+        }
+        console.log("验证结果：", re, nodeAddon.greet('Yeuoly'));
 
         event.sender.send('check-lic', re)
     })
 
 
     ipcMain.on('create-lic', (event, arg) => {
-        let rcode = keynode.GetMachineCode();
-        let re = keynode.CreateLic(rcode.MachineCode, arg.privilegedTime);
+        // let rcode = keynode.GetMachineCode();
+        // let re = keynode.CreateLic(rcode.MachineCode, arg.privilegedTime);
+        let re = '123456'
         console.log("生成结果：", re);
 
         event.sender.send('create-lic', re)

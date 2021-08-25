@@ -44,14 +44,6 @@ export const constantRouterMap = [{
             path: 'screenCAP',
             component: () =>
                 import ('@/views/screenCAP/index')
-        }, {
-            path: 'safety',
-            component: () =>
-                import ('@/views/safety/index')
-        }, {
-            path: 'evaluate',
-            component: () =>
-                import ('@/views/evaluate/index')
         }]
     },
     {
@@ -67,14 +59,6 @@ export const constantRouterMap = [{
         component: () =>
             import ('@/views/bandm/index'),
         name: 'Bandm',
-        hidden: true,
-
-    },
-    {
-        path: '/update',
-        component: () =>
-            import ('@/views/update/index'),
-        name: 'update',
         hidden: true,
 
     },

@@ -39,6 +39,7 @@
                 <el-input
                   name="softwareSerial"
                   type="text"
+                  style="width: 280px"
                   v-model="loginForm.softwareSerial"
                   autocomplete="on"
                   placeholder="请输入软件序列号"
@@ -60,7 +61,7 @@
         </div>
       </el-col>
     </el-row>
-    <div class="footer">花小鹿科技 © 2021</div>
+    <div class="footer">XXX科技 © 2021</div>
   </div>
 </template>
 
@@ -236,7 +237,6 @@ $light_gray: #eee;
     text-align: center;
   }
   .svg-container {
-    padding: 6px 5px 6px 15px;
     color: $dark_gray;
     vertical-align: middle;
     width: 30px;
