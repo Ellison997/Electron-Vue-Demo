@@ -214,59 +214,7 @@ export default {
     // 设置MR  量程
     settingMr(value, model) {
       let that = this;
-      let mrConfigCommand;
-      if (model == "AUTO") {
-        this.mrSettingPopover = false;
-        // 自动量程相关操作
-        let maxArr = [];
-        let time = setInterval(() => {
-          maxArr.push(this.screenCAPValueMax);
-        }, 1000);
-        setTimeout(() => {
-          clearInterval(time);
-          // 找出10s钟的最大值，然后和MR 列表匹配 找出最大的一个  然后设置
-          let maxNumber = Math.max.apply(Math, maxArr);
-          let mrs = that.mrList.map((i) => i.value);
-          mrs.sort();
-
-          let mrValue = 0;
-          for (let index = 0; index < mrs.length; index++) {
-            if (mrs[index] > maxNumber) {
-              mrValue = mrs[index];
-              break;
-            }
-          }
-          if (mrValue == 0) {
-            mrValue = mrs[mrs.length - 1];
-          }
-          mrConfigCommand = `SAFETY_CONFIG ON,${this.rbwModel},${this.rbw},${mrValue};`;
-          this.$ipcRenderer.send("command", [mrConfigCommand]);
-
-          // 监听rbw 设置
-          this.$ipcRenderer.on(mrConfigCommand, (event, arg) => {
-            this.$message({
-              showClose: true,
-              message: `设置自动量程成功,量程为${mrValue}`,
-              type: "success",
-            });
-          });
-        }, 10000);
-      } else {
-        let sc = this.safetyConfig;
-        mrConfigCommand = `SPECTRUM_CONFIG ${sc.fcent},${sc.fspan},${this.rbw},${sc.vbwMode},${sc.vbw},${value};`;
-
-        this.$ipcRenderer.send("command", [mrConfigCommand]);
-        this.mrSettingPopover = false;
-        // 监听rbw 设置
-        this.$ipcRenderer.on(mrConfigCommand, (event, arg) => {
-          store.dispatch("SettingMr", value);
-          this.$message({
-            showClose: true,
-            message: `设置量程成功`,
-            type: "success",
-          });
-        });
-      }
+    
     },
 
     listening() {
@@ -287,11 +235,7 @@ export default {
         console.log("当前模式：", model);
         if (model[1] == "0;") {
           this.modelText = "列表模式";
-          // if (this.modelText == "列表模式") {
-          //   this.$router.push("/screenCAP");
-          // } else {
-          //   this.$router.push("/safety");
-          // }
+       
           console.log("设置了吗？", this.modelText);
         }
       });

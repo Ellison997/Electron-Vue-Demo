@@ -10,7 +10,7 @@ router.beforeEach((to, from, next) => {
     if (store.getters.token) {
         if (to.path === '/login') {
             next({ path: '/' })
-            NProgress.done() // if current page is screenCAP will not trigger	afterEach hook, so manually handle it
+            NProgress.done()
         } else {
             if (store.getters.roles.length === 0) {
                 store.dispatch('GetInfo').then(res => { // 拉取用户信息

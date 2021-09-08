@@ -11,9 +11,6 @@ const getters = {
     rbwModel: state => state.app.rbwModel,
     mp: state => state.app.mp,
     safetyConfig: state => state.app.safetyConfig,
-    screenCAPType: state => state.app.screenCAPType,
-    screenCAPIsOverload: state => state.app.screenCAPIsOverload,
-    screenCAPValueMax: state => state.app.screenCAPValueMax,
 
     storagePath: state => state.setting.storagePath,
     localVersion: state => state.setting.localVersion,

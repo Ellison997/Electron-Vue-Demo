@@ -13,9 +13,7 @@ const app = {
         rbw: '',
         rbwModel: '',
         unit: '',
-        screenCAPType: 'ACT', // 列表模式类型
-        screenCAPIsOverload: 'ACT', // 结果值是否过载
-        screenCAPValueMax: 0, // 最大结果值
+
         safetyConfig: {
             fmin: 420000000,
             fmax: 6000000000,
@@ -70,16 +68,7 @@ const app = {
         SETTING_SPECTRUM_CONFIG: (state, safetyConfig) => {
             state.safetyConfig = safetyConfig
         },
-        SETTING_SAFETY_TYPE: (state, screenCAPType) => {
-            state.screenCAPType = screenCAPType
-        },
 
-        SETTING_SAFETY_IS_OVERLOAD: (state, screenCAPIsOverload) => {
-            state.screenCAPIsOverload = screenCAPIsOverload
-        },
-        SETTING_SAFETY_VALUE_MAX: (state, screenCAPValueMax) => {
-            state.screenCAPValueMax = screenCAPValueMax
-        },
         IS_CONNECT: (state, isConnect) => {
             state.isConnect = isConnect
         }
@@ -116,16 +105,7 @@ const app = {
         SettingSpectrumConfig({ commit }, safetyConfig) {
             commit('SETTING_SPECTRUM_CONFIG', safetyConfig)
         },
-        SettingSafetyType({ commit }, screenCAPType) {
-            commit('SETTING_SAFETY_TYPE', screenCAPType)
-        },
 
-        SettingSafetyIsOverload({ commit }, screenCAPIsOverload) {
-            commit('SETTING_SAFETY_IS_OVERLOAD', screenCAPIsOverload)
-        },
-        SettingSafetyValueMax({ commit }, screenCAPValueMax) {
-            commit('SETTING_SAFETY_VALUE_MAX', screenCAPValueMax)
-        },
         IsConnect({ commit }, isConnect) {
             commit('IS_CONNECT', isConnect)
         },

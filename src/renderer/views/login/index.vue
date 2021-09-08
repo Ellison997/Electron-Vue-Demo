@@ -221,9 +221,7 @@ $light_gray: #eee;
   height: 100%;
   width: 100%;
   background-color: $bg;
-  // background-image: url("./../../assets/login/bg.png");
-  // background-repeat: no-repeat;
-  // background-size: 100% 100%;
+
   .login-form {
     padding: 2px;
     margin: 20px auto;
