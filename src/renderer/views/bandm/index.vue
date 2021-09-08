@@ -161,9 +161,7 @@ export default {
 .container {
   height: 100%;
   width: 100%;
-  background-image: url("./../../assets/content/line.png");
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-color: #2d3a4b;
   color: #fff;
   letter-spacing: 2px;
   padding: 10px;

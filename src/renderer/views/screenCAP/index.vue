@@ -23,11 +23,7 @@
 </template>
 
 <script>
-import bus from "@/utils/bus.js";
-import mp4 from "@/utils/mp4.js";
-import { unitConversion } from "@/utils";
 import store from "@/store";
-const { desktopCapturer, remote, shell } = require("electron");
 const path = require("path");
 const fs = require("fs");
 import { mapGetters } from "vuex";
@@ -77,7 +73,7 @@ export default {
   },
   methods: {
     async start() {
-      const sources = await desktopCapturer.getSources({
+      const sources = await this.$desktopCapturer.getSources({
         types: ["window", "screen"],
       });
       console.log("视频源:", sources);
@@ -129,6 +125,7 @@ export default {
     },
 
     async stop() {
+      let that=this;
       if (!this.mediaRecorder) return;
 
       this.mediaRecorder.onstop = async () => {
@@ -136,12 +133,12 @@ export default {
          const buffer = Buffer.from(await blob.arrayBuffer());
        // const buffer = Buffer.from(mp4(Buffer.from(await blob.arrayBuffer())));
         const filePath = path.resolve(
-          remote.app.getPath("downloads"),
+          that.$remote.app.getPath("downloads"),
           `${Date.now()}.webm`
         );
         console.log("路径：", filePath);
         fs.writeFile(filePath, buffer, () => {
-          shell.showItemInFolder(filePath);
+         that.$shell.showItemInFolder(filePath);
           this.mediaRecorder = null;
           this.chunks = [];
         });

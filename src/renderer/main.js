@@ -10,7 +10,7 @@ import store from './store'
 
 import '@/icons' // icon
 import '@/permission' // permission control
-import { electron, ipcRenderer, remote } from "electron";
+import { electron, ipcRenderer, remote, desktopCapturer, shell } from "electron";
 
 
 
@@ -110,6 +110,8 @@ ipcRenderer.removeAll = removeAll
 Vue.prototype.$electron = electron;
 Vue.prototype.$ipcRenderer = ipcRenderer;
 Vue.prototype.$remote = remote;
+Vue.prototype.$desktopCapturer = desktopCapturer;
+Vue.prototype.$shell = shell;
 
 Vue.config.productionTip = false
 
