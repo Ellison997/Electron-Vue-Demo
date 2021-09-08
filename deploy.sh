@@ -21,5 +21,5 @@ npm install sqlite3 --runtime=electron --target=9.4.4
 echo '清除构建'
 npm run build:clean
 
-echo '打包构建'
-npm run build
+# echo '打包构建'
+# npm run build

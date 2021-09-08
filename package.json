@@ -63,10 +63,10 @@
             ]
         },
         "mac": {
-            "icon": "static/icons/icon.icns"
+            "icon": "build/icons/icon.icns"
         },
         "win": {
-            "icon": "static/icons/icon.ico",
+            "icon": "build/icons/icon.ico",
             "target": [
                 {
                     "target": "nsis",
@@ -75,7 +75,9 @@
             ]
         },
         "linux": {
-            "icon": "static/icons"
+            "icon": "build/icons",
+            "target":"AppImage",
+            "category":"Office"
         }
     },
     "dependencies": {
