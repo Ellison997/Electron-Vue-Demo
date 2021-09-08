@@ -63,10 +63,10 @@
             ]
         },
         "mac": {
-            "icon": "static/icon.icns"
+            "icon": "static/icons/icon.icns"
         },
         "win": {
-            "icon": "static/icon.ico",
+            "icon": "static/icons/icon.ico",
             "target": [
                 {
                     "target": "nsis",

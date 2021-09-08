@@ -27,7 +27,7 @@ or
 ## 安装 sqlite3
 
 ```
-npm install sqlite3 --runtime=electron --target=5.0.7 --dist-url=https://atom.io/download/electron --save
+npm install sqlite3 --runtime=electron --target=9.4.4 --dist-url=https://atom.io/download/electron --save
 ```
 
 ## 免安装版本打包
@@ -73,3 +73,11 @@ npm run dev
 ```
 
 使用模块加载原生node  native-ext-loader
+
+
+"linux": {
+            "icon": "static/icons",
+            "target": [
+                "AppImage"
+           ]
+        }
