@@ -7,35 +7,17 @@
       <el-col :span="3">
         <div class="action">
           <div class="select" style="position: relative">
-            <div @click="closePopover('mrSetting')">
-              <img src="./../../assets/content/mp_setting.png" alt srcset />
-              <span class="text">录屏</span>
-            </div>
-            <div v-if="mrSettingPopover" class="settingPopover">
-              <ul class="auto-ul" v-if="modelText == '列表模式'">
-                <!-- <li @click="settingMr(0,'AUTO')">自动</li> -->
-                <li style="cursor: auto">手动设置</li>
-              </ul>
-              <ul class="manual-ul" v-if="mrList.length != 0">
-                <li
-                  v-for="mr in mrList"
-                  v-bind:key="mr.value"
-                  @click="settingMr(mr.value, 'MANUAL')"
-                >
-                  {{ mr.lable }}
-                </li>
-              </ul>
-            </div>
+            <img src="./../../assets/content/cap.png" alt srcset />
+            <span class="text">录屏</span>
           </div>
           <div class="select" style="position: relative">
             <div @click="closePopover('rbwSetting')">
-              <img src="./../../assets/content/bandwidth.png" alt srcset />
+              <img src="./../../assets/content/voice.png" alt srcset />
               <span class="text">声音转换</span>
             </div>
             <div v-if="rbwSettingPopover" class="settingPopover">
               <div v-if="modelText != '频谱模式'">
                 <ul class="auto-ul">
-                  <!-- <li @click="settingRbw(0,'AUTO')">自动RBW</li> -->
                   <li style="cursor: auto">手动RBW</li>
                 </ul>
                 <ul class="manual-ul" style="height: 60px">
@@ -87,7 +69,6 @@ export default {
       modelText: "",
       connectPopover: false,
       modelPopover: false,
-      mrSettingPopover: false,
       rbwSettingPopover: false,
       resuleSettingPopover: false,
       serial_number: "", // 序列号
@@ -128,27 +109,7 @@ export default {
   filters: {
     unitCon: function (value, unit) {
       return unitConversion(value, unit);
-    },
-    typeCon: function (value) {
-      let typeText = "";
-
-      switch (value) {
-        case "ACT":
-          typeText = "实时值";
-          break;
-        case "MAX":
-          typeText = "最大值";
-          break;
-        case "EVENNESS":
-          typeText = "六分钟平均";
-          break;
-
-        default:
-          break;
-      }
-
-      return typeText;
-    },
+    }
   },
   methods: {
     // 设置结果类型
@@ -214,7 +175,6 @@ export default {
     // 设置MR  量程
     settingMr(value, model) {
       let that = this;
-    
     },
 
     listening() {
@@ -235,7 +195,7 @@ export default {
         console.log("当前模式：", model);
         if (model[1] == "0;") {
           this.modelText = "列表模式";
-       
+
           console.log("设置了吗？", this.modelText);
         }
       });
